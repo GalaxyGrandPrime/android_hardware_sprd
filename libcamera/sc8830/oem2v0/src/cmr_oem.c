@@ -2306,6 +2306,7 @@ static int camera_get_reloadinfo(cmr_handle  oem_handle, struct isp_cali_param *
 }
 #endif
 
+#if 0
 int32_t camera_isp_flash_get_charge(void *handler, struct isp_flash_cell *cell)
 {
 	int32_t                       ret = 0;
@@ -2473,6 +2474,7 @@ out:
 
 	return ret;
 }
+#endif
 
 cmr_int camera_isp_init(cmr_handle  oem_handle)
 {
@@ -2562,10 +2564,12 @@ cmr_int camera_isp_init(cmr_handle  oem_handle)
 		isp_param.size.h = sensor_info_ptr->mode_info[SENSOR_MODE_PREVIEW_ONE].height;
 	}
 
+#if 0
 	isp_param.ops.flash_get_charge = camera_isp_flash_get_charge;
 	isp_param.ops.flash_set_charge = camera_isp_flash_set_charge;
 	isp_param.ops.flash_get_time = camera_isp_flash_get_time;
 	isp_param.ops.flash_set_time = camera_isp_flash_set_time;
+#endif
 
 	isp_param.ctrl_callback = camera_isp_evt_cb;
 	isp_param.oem_handle = oem_handle;
@@ -4925,6 +4929,8 @@ cmr_int camera_ioctl_for_setting(cmr_handle oem_handle, cmr_uint cmd_type, struc
 	case SETTING_IO_GET_PREVIEW_MODE:
 		param_ptr->cmd_value = cxt->prev_cxt.preview_sn_mode;
 		break;
+	/* XXX: Fix me */
+	/*
 	case SETTING_IO_GET_FLASH_MAX_CAPACITY:	{
 		struct sprd_flash_capacity capacity;
 		struct sprd_flash_cfg_param cfg;
@@ -4938,7 +4944,7 @@ cmr_int camera_ioctl_for_setting(cmr_handle oem_handle, cmr_uint cmd_type, struc
 		}
 	}
 		break;
-
+	*/
 	default:
 		CMR_LOGE("don't support cmd %ld", cmd_type);
 		ret = CMR_CAMERA_NO_SUPPORT;

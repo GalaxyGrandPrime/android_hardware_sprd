@@ -522,7 +522,8 @@ cmr_int cmr_grab_buff_cfg (cmr_handle grab_handle, struct buffer_cfg *buf_cfg)
 		parm.frame_addr_vir.v = buf_cfg->addr_vir[i].addr_v;
 		parm.index            = buf_cfg->index[i];
 		parm.is_reserved_buf  = buf_cfg->is_reserved_buf;
-		parm.buf_flag         = buf_cfg->flag;
+		/* XXX: Fix me */
+		//parm.buf_flag         = buf_cfg->flag;
 		parm.reserved[0]      = buf_cfg->zsl_private;
 		CMR_LOGV("buf %d: Y 0x%lx, U 0x%lx, V 0x%lx \n",
 			i, buf_cfg->addr[i].addr_y, buf_cfg->addr[i].addr_u, buf_cfg->addr[i].addr_v);
@@ -1233,7 +1234,8 @@ cmr_int cmr_grab_cfg_flash(cmr_handle grab_handle, void *param)
 	p_grab = (struct cmr_grab*)grab_handle;
 	CMR_CHECK_HANDLE;
 	CMR_CHECK_FD;
-	ret = ioctl(p_grab->fd, SPRD_IMG_IO_CFG_FLASH, param);
+	/* XXX: Fix me */
+	//ret = ioctl(p_grab->fd, SPRD_IMG_IO_CFG_FLASH, param);
 	if (ret) {
 		CMR_LOGE("error");
 	}

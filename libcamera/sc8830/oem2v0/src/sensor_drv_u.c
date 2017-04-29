@@ -275,7 +275,7 @@ cmr_int sns_dev_mipi_lvl(struct sensor_drv_context *sensor_cxt,
 	SENSOR_DRV_CHECK_ZERO(sensor_cxt);
 
 	CMR_LOGV("fd 0x%lx", sensor_cxt->fd_sensor);
-	ret = ioctl(sensor_cxt->fd_sensor, SENSOR_IO_SET_MIPI_SWITCH, &level);
+	//ret = ioctl(sensor_cxt->fd_sensor, SENSOR_IO_SET_MIPI_SWITCH, &level);
 	if (0 != ret) {
 		CMR_LOGE("failed,  level = %d, ret=%ld ", level, ret);
 		ret = -1;
